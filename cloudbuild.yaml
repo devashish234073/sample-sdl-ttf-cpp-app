@@ -1,0 +1,5 @@
+steps:
+  - name: 'gcr.io/cloud-builders/cmake'
+    args: ['cmake', '.']
+  - name: 'gcr.io/cloud-builders/cmake'
+    args: ['--build', '.']
