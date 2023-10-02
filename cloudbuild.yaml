@@ -1,13 +1,25 @@
 steps:
-  - name: 'docker.io/kitware/cmake:ci-gcc_cxx_modules-x86_64-2023-09-21'
+  - name: 'ubuntu:latest'
     entrypoint: 'bash'
     args:
       - '-c'
       - |
+        # Update the package list and install necessary dependencies
+        apt-get update -y
+        apt-get install -y cmake g++ libsdl2-dev libsdl2-ttf-dev
+
+  - name: 'ubuntu:latest'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        # Run CMake to generate the build files
         cmake .
-  - name: 'docker.io/kitware/cmake:ci-gcc_cxx_modules-x86_64-2023-09-21'
+
+  - name: 'ubuntu:latest'
     entrypoint: 'bash'
     args:
       - '-c'
       - |
+        # Build the project
         cmake --build .
