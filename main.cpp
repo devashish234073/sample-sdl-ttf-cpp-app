@@ -76,7 +76,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    TTF_Font* font = loadFont("./Pacifico.ttf", 28);
+    TTF_Font* font = loadFont("Pacifico.ttf", 28);
     if (font == nullptr) {
         return 1;
     }
