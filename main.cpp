@@ -17,7 +17,7 @@ bool initSDL(SDL_Window*& window, SDL_Renderer*& renderer) {
     // Create a window
     window = SDL_CreateWindow("SDL2 and SDL2_ttf Example", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
     if (window == nullptr) {
-        std::cerr << "Window creation failed: " << SDL_GetError() << std::endl;
+        std::cerr << "Window creation failed:: " << SDL_GetError() << std::endl;
         return false;
     }
 
