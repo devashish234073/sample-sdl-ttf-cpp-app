@@ -1,11 +1,11 @@
 steps:
-  - name: 'docker.io/kitware/cmake:latest'
+  - name: 'docker.io/kitware/cmake:ci-gcc_cxx_modules-x86_64-2023-09-21'
     entrypoint: 'bash'
     args:
       - '-c'
       - |
         cmake .
-  - name: 'docker.io/kitware/cmake:latest'
+  - name: 'docker.io/kitware/cmake:ci-gcc_cxx_modules-x86_64-2023-09-21'
     entrypoint: 'bash'
     args:
       - '-c'
