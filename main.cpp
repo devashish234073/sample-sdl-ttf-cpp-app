@@ -76,7 +76,19 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    TTF_Font* font = loadFont("Pacifico.ttf", 28);
+    std::string currentDir = argv[0];
+    size_t found = currentDir.find_last_of("/\\");
+    std::string fontPath;
+
+    if (found != std::string::npos) {
+        // Append the relative path to the .ttf file
+        fontPath = currentDir.substr(0, found + 1) + "Pacifico.ttf";
+    } else {
+        std::cerr << "Unable to determine current directory." << std::endl;
+        return 1;
+    }
+
+    TTF_Font* font = loadFont(fontPath, 28);
     if (font == nullptr) {
         return 1;
     }
