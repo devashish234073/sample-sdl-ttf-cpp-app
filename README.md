@@ -11,4 +11,8 @@ I have uploaded a fileuploader nodejs file which can be run in a compute instanc
 
  We can use this api to modify the cloudbuild.yaml file so that after a successful build it call this api with file names replaced with the artifact name that gets created in the build process 
 
- And we will have our upload step also working
+ And we will have our upload step also working...
+
+ Also for getting the file in some other instance or environment added another GET api :
+
+ curl -O -J http://localhost:3000/read/file.txt
