@@ -7,7 +7,22 @@ const uploadDir = path.join(__dirname, 'uploads');
 
 // Create the HTTP server
 const server = http.createServer((req, res) => {
-  if (req.url === '/upload' && req.method === 'POST') {
+  if (req.method === 'GET') {
+    const fileName = req.url.replace(/^\/read\//, '');
+    const filePath = path.join(uploadDir, fileName);
+
+    if (fs.existsSync(filePath)) {
+      const fileStream = fs.createReadStream(filePath);
+
+      res.setHeader('Content-Disposition', `attachment; filename=${fileName}`);
+      res.setHeader('Content-Type', 'application/octet-stream');
+
+      fileStream.pipe(res);
+    } else {
+      res.writeHead(404, { 'Content-Type': 'text/plain' });
+      res.end('File not found.');
+    }
+  } else if (req.url === '/upload' && req.method === 'POST') {
     const fileName = path.basename(req.headers['content-disposition'].split(';')[1].trim().split('=')[1], '"');
 
     const filePath = path.join(uploadDir, fileName);
