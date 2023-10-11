@@ -11,5 +11,5 @@ steps:
         cmake --build .
 artifacts:
   objects:
-    location: 'gs://yourbucketname/'
+    location: 'gs://youractualbucketname/'
     paths: ['SDL2_TTF_Example']
